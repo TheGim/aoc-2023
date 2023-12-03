@@ -12,15 +12,15 @@ num_word_map = {
     'nine': '9',
 }
 
-
-pattern = re.compile(r'\d')
-#pattern = re.compile(r'(?=(' + '|'.join(num_word_map.keys()) + r'|\d))')
-
-
+part1_pattern = re.compile(r'\d')
+part2_pattern = re.compile(r'(?=(' + '|'.join(num_word_map.keys()) + r'|\d))')
 
 def get_number(num) -> str:
     return num if num.isdigit() else num_word_map[num]
 
-with open ('first/input.txt', 'r') as f:
-    curr_sum = sum(int(get_digit(matches[0]) + get_digit(matches[-1])) for matches in map(pattern.findall, map(str.strip, f)))
-    print(curr_sum)
+def calculate_sum(pattern):
+    with open ('Day1_Trebuchet/input.txt', 'r') as f:
+        return sum(int(get_number(matches[0]) + get_number(matches[-1])) for matches in map(pattern.findall, map(str.strip, f)))
+
+print("Part 1 Sum: ", calculate_sum(part1_pattern))
+print("Part 2 Sum: ", calculate_sum(part2_pattern))

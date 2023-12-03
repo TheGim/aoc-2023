@@ -15,7 +15,7 @@ def calculate_power(game):
 def total_power_of_min_sets(input_data):
     return sum(calculate_power(parse_game(game_data.split(';'))) for _, game_data in (line.split(':') for line in input_data))
 
-with open('second/input.txt', 'r') as file:
+with open('Day2_Cube_Conundrum/input.txt', 'r') as file:
     input_data = file.readlines()
 
 cube_counts_part_one = {"red": 12, "green": 13, "blue": 14}
